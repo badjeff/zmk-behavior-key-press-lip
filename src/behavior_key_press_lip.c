@@ -114,9 +114,11 @@ static int behavior_key_press_lip_init(const struct device *dev) {
         .keycodes = DT_INST_PROP(n, keycodes),                                                   \
         .keycodes_count = DT_INST_PROP_LEN(n, keycodes),                                         \
     };                                                                                           \
-    BEHAVIOR_DT_INST_DEFINE(n, behavior_key_press_lip_init, NULL, &behavior_key_press_lip_data_##n,        \
-                            &behavior_key_press_lip_config_##n, POST_KERNEL,                          \
-                            CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, &behavior_key_press_lip_driver_api);
+    BEHAVIOR_DT_INST_DEFINE(n, behavior_key_press_lip_init, NULL,                                \
+                            &behavior_key_press_lip_data_##n,                                    \
+                            &behavior_key_press_lip_config_##n,                                  \
+                            POST_KERNEL, CONFIG_KERNEL_INIT_PRIORITY_DEFAULT,                    \
+                            &behavior_key_press_lip_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(K0SOCD_INST)
 
