@@ -1,43 +1,47 @@
 # LIP Key Press Behavior
 
-Implementation of [LAST INPUT PRIORITY](https://www.hitboxarcade.com/blogs/support/what-is-socd) key press for ZMK.
+Implementation of [Last Input Priority](https://www.hitboxarcade.com/blogs/support/what-is-socd) key press favor for ZMK.
+
+## What it does
+
+This is a modified key press behavior that allow user to define a set keycodes for opposing cardinal directions. While a key is just actuated and any other key is not released yet, this behavior injects a release event of the holding keycode before the last actuated keystroke. And the release event that injected in advance will be ignored later.
 
 ## Installation
 
 Include this project on your ZMK's west manifest in `config/west.yml`:
 
-```yaml
-manifest:
+```diff
+  [...]
   remotes:
-    # START +++
-    - name: badjeff
-      url-base: https://github.com/badjeff
-    # END +++
++    - name: badjeff
++      url-base: https://github.com/badjeff
   projects:
-    # START +++
-    - name: zmk-behavior-key-press-lip
-      remote: badjeff
-      revision: main
-    # END +++
-  self:
-    path: config
++    - name: zmk-behavior-key-press-lip
++      remote: badjeff
++      revision: main
+  [...]
 ```
 
 Now, update your `shield.keymap` adding the behaviors.
 
-```keymap
-/ {
+```c
+/{
         behaviors {
-              kpad: key_kip_a_d {
+              
+              /* Setup left and right of WASD */
+              kpad: key_lip_a_d {
                       compatible = "zmk,behavior-key-press-lip";
                       #binding-cells = <1>;
                       keycodes = <A D>;
               };
-              kpws: key_kip_w_s {
+
+              /* Setup up and down of WASD */
+              kpws: key_lip_w_s {
                       compatible = "zmk,behavior-key-press-lip";
                       #binding-cells = <1>;
                       keycodes = <W S>;
               };
+
         };
 
         keymap {
