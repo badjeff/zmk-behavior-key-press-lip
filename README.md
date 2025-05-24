@@ -42,6 +42,8 @@ Now, update your `shield.keymap` adding the behaviors.
                       keycodes = <W S>;
               };
 
+              /* Or, #include <behaviors/key_press_lip.dtsi> */
+
         };
 
         keymap {

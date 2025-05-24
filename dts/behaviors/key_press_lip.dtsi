@@ -1,0 +1,32 @@
+/*
+ * Copyright (c) 2025 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <dt-bindings/zmk/behaviors.h>
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+    behaviors {
+
+#if ZMK_BEHAVIOR_OMIT(KP)
+        /omit-if-no-ref/
+#endif
+        kpad: kp_lip_a_d {
+            compatible = "zmk,behavior-key-press-lip";
+            #binding-cells = <1>;
+            keycodes = <A D>;
+        };
+
+#if ZMK_BEHAVIOR_OMIT(KP)
+        /omit-if-no-ref/
+#endif
+        kpws: kp_lip_w_s {
+            compatible = "zmk,behavior-key-press-lip";
+            #binding-cells = <1>;
+            keycodes = <W S>;
+        };
+
+    };
+};
