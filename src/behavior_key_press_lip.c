@@ -94,8 +94,8 @@ static const struct behavior_driver_api behavior_key_press_lip_driver_api = {
 };
 
 static int behavior_key_press_lip_init(const struct device *dev) {
-    const struct behavior_key_press_lip_config *config = dev->config;
-    struct behavior_key_press_lip_data *data = dev->data;
+    // const struct behavior_key_press_lip_config *config = dev->config;
+    // struct behavior_key_press_lip_data *data = dev->data;
     return 0;
 }
 
